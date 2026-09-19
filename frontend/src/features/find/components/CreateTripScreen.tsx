@@ -1,0 +1,16 @@
+'use client';
+
+import { FormEvent, useState } from 'react';
+import Link from 'next/link';
+import { ScreenHeader } from '@/components/navigation/ScreenHeader';
+import { Icon } from '@/components/ui/Icon';
+
+export function CreateTripScreen() {
+  const [submitted, setSubmitted] = useState(false);
+  function submit(event: FormEvent<HTMLFormElement>) { event.preventDefault(); setSubmitted(true); }
+  return <div className="min-h-full bg-[#050906] text-[#f2eedf]"><ScreenHeader backHref="/profile" title="Create trip" /><main className="px-5 pb-12 pt-6 lg:px-8"><div className="mx-auto max-w-4xl"><div className="mb-8"><p className="text-sm uppercase tracking-[.2em] text-[#8b9b8f]">Create a new adventure</p><h1 className="mt-2 text-4xl font-semibold">Bring people together.</h1><p className="mt-2 max-w-xl text-[#aebcaf]">Share the essentials first. Backend fields can be mapped directly from these names.</p></div><form className="grid gap-5 lg:grid-cols-[1.1fr_.9fr]" noValidate onSubmit={submit}><section className="space-y-4 rounded-[1.75rem] bg-[#142217] p-5 sm:p-7"><Field label="Destination" name="destination" placeholder="e.g. Phu Soi Dao" required /><Field label="Date range" name="dateRange" placeholder="7-8 / 10 / 68" required /><Field label="Meeting point" name="meetingPoint" placeholder="Bang Sue station" required /><label className="block text-sm font-medium">Trip description<textarea className="mt-2 min-h-36 resize-none w-full rounded-xl border border-white/10 bg-[#0c160e] px-4 py-3 text-[#f2eedf] outline-none focus:border-[#b9d1b7]" name="description" placeholder="What should people know?" /></label></section><section className="space-y-4 rounded-[1.75rem] bg-[#142217] p-5 sm:p-7"><div className="grid min-h-48 place-items-center rounded-2xl border border-dashed border-[#768578] bg-[#0c160e] text-center"><Icon name="plus" size={32} /><p className="mt-2 text-sm text-[#b5c0b3]">Add a cover image</p><p className="mt-1 text-xs text-[#768578]">Connect to upload service later</p></div><label className="block text-sm font-medium">Maximum members<input className="mt-2 w-full rounded-xl border border-white/10 bg-[#0c160e] px-4 py-3 outline-none focus:border-[#b9d1b7]" defaultValue="5" min="2" name="maxMembers" type="number" /></label><label className="flex items-center gap-3 rounded-xl border border-white/10 px-4 py-3 text-sm"><input className="accent-[#f2eedf]" name="public" type="checkbox" defaultChecked />Show this trip publicly</label><button className="w-full rounded-xl bg-[#f2eedf] px-5 py-3.5 font-semibold text-[#18241b]" type="submit">Publish trip</button>{submitted && <p className="rounded-xl bg-[#294d31] px-4 py-3 text-center text-sm">Trip draft ready for API integration.</p>}<Link className="block text-center text-sm text-[#b9d1b7]" href="/find">Cancel</Link></section></form></div></main></div>;
+}
+
+function Field({ label, name, placeholder, required, type = 'text' }: { label: string; name: string; placeholder: string; required?: boolean; type?: string }) {
+  return <label className="block text-sm font-medium">{label}<input className="mt-2 w-full rounded-xl border border-white/10 bg-[#0c160e] px-4 py-3 text-[#f2eedf] outline-none focus:border-[#b9d1b7]" name={name} placeholder={placeholder} required={required} type={type} /></label>;
+}

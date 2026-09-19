@@ -6,3 +6,5 @@ export * from './components/ChatList';
 export * from './components/ChatItem';
 export * from './components/ChatSearchBar';
 export * from './components/MessageBubble';
+export * from './components/ChatScreen';
+export * from './components/ChatRoomScreen';

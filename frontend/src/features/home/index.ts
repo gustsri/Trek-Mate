@@ -6,3 +6,4 @@ export * from './components/QuickActions';
 export * from './components/FeedTabs';
 export * from './components/PostCard';
 export * from './components/FeedList';
+export * from './components/HomeScreen';

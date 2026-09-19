@@ -7,3 +7,4 @@ export * from './components/MedalBar';
 export * from './components/HistorySlider';
 export * from './components/UserPostsGrid';
 export * from './components/AddPostFab';
+export * from './components/ProfileScreen';

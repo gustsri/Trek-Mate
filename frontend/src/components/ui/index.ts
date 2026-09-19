@@ -5,3 +5,4 @@ export * from './Badge';
 export * from './Card';
 export * from './SearchBar';
 export * from './BottomSheet';
+export * from './Icon';
